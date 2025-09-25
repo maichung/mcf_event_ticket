@@ -1,0 +1,29 @@
+<odoo>
+    <!-- Kế thừa mẫu vé toàn trang -->
+    <template id="mcf_event_ticket_template"
+              inherit_id="event.event_registration_report_template_full_page_ticket">
+
+        <!-- Ghi đè toàn bộ nội dung -->
+        <xpath expr="." position="replace">
+            <t t-foreach="docs" t-as="attendee">
+                <t t-call="web.html_container">
+                    <div style="width:100%; height:100%; font-family: DejaVu Sans, sans-serif;">
+                        
+                        <!-- Hình nền thiệp (ảnh anh gửi, đặt sẵn trong Odoo hoặc link public) -->
+                        <div style="position:relative; width:100%; height:100%;">
+                            <img src="/mcf_event_ticket/static/src/img/thiepmoi.png"
+                                 style="width:100%; height:auto;"/>
+                            
+                            <!-- Tên khách mời in lên -->
+                            <div style="position:absolute; top:58%; left:32%; font-size:22px;
+                                        font-weight:bold; color:#000;">
+                                Ông/Bà: <span t-field="attendee.name"/>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </t>
+            </t>
+        </xpath>
+    </template>
+</odoo>
